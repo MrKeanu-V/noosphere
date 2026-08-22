@@ -1,3 +1,17 @@
 {
-  "promptDelete": false
+  "promptDelete": false,
+  "showLineNumber": false,
+  "foldHeading": true,
+  "vimMode": false,
+  "readableLineLength": false,
+  "strictLineBreaks": true,
+  "tabSize": 4,
+  "livePreview": true,
+  "autoPairMarkdown": false,
+  "smartIndentList": true,
+  "useTab": false,
+  "defaultViewMode": "source",
+  "newFileLocation": "current",
+  "newFileFolderPath": "00_Inbox",
+  "attachmentFolderPath": "99_Archive/00_assets"
 }
