@@ -6,10 +6,11 @@ created: 2026-08-22
 updated: <% tp.file.last_modified_date("YYYY-MM-DD HH:mm") %>
 status: 🟡 进行中
 ---
-# 个人编码风格总结
+# Coding Style Summary
+单独把Coding Style列个文章，出于一种刻板印象——{% label danger @开发者在大多数人印象里往往和没品味划等号 %}，比如常听到“🧑‍💻(程序员)≈👕(格子衫)+👖(牛仔裤)”。我倒不关心一个人的穿衣风格或是这些外在的评价。不过作为开发者，我确实开始对（~~或者说仍在对~~😵‍💫）编码风格有所要求。根据我的个人观察，编码风格其实是开发者的Coding taste最直观体现，并且编码上的bad flavor其实就开始暗暗酝酿着💩⛰️。
 
-个人目前的一些编码风格总结：
-## C/CPP
+本文收集Coding Style最佳实践之余，也记录个人的一些经验总结。
+## ## C/C++ Coding Style
 ### Google C++ Style
 
 > 宇宙厂的最佳实践
