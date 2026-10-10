@@ -25,3 +25,8 @@ Desktop.ini
 # 编辑器
 .vscode/
 .idea/
+.claude/
+.cline/
+
+# 资源文件（其中文件收到上传）
+03_Resources/
