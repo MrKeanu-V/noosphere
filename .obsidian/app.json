@@ -7,11 +7,11 @@
   "strictLineBreaks": false,
   "tabSize": 2,
   "livePreview": true,
-  "autoPairMarkdown": false,
+  "autoPairMarkdown": true,
   "smartIndentList": true,
   "useTab": false,
   "defaultViewMode": "source",
-  "newFileLocation": "current",
+  "newFileLocation": "folder",
   "newFileFolderPath": "00_Inbox",
   "attachmentFolderPath": "99_Archive/00_assets"
 }

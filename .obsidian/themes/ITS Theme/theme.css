@@ -2866,6 +2866,11 @@ settings:
         type: heading
         level: 1
         collapsed: true
+    - 
+        id: info-font-icons
+        description: "🔗: Needs the [encoded font icon css snippet](https://github.com/SlRvb/Obsidian--ITS-Theme/blob/main/Snippets/S%20-%20Encoded%20Icons.css) installed and enabled to display bullet/hr icons correctly."
+        type: info-text
+        markdown: true
     -
         title: Accent Color
         description: Use the Obsidian accent color picker in the Appearance tab as theme color
@@ -2880,7 +2885,7 @@ settings:
         id: slrvb-g
         type: class-toggle
     - 
-        title: School Days
+        title: School Days 🔗
         id: s-d
         type: class-toggle
     -
@@ -2891,7 +2896,7 @@ settings:
         default: none
         options:
             - 
-                label: SlRvb D&D
+                label: SlRvb D&D 🔗
                 value: dnd
             -
                 label: WOTC/Beyond
@@ -2903,15 +2908,15 @@ settings:
                 label: Pathfinder Remaster
                 value: pathfinder-remaster
     -
-        title: Tangerine Dunes
+        title: Tangerine Dunes 🔗
         id: t-d
         type: class-toggle
     -
-        title: Drowned
+        title: Drowned 🔗
         id: drwn
         type: class-toggle
     -
-        title: Nord
+        title: Nord 🔗
         id: nord
         type: class-toggle
     -   
@@ -4057,6 +4062,9 @@ body {
   margin-left: -2.3em;
   padding-right: 0em;
 }
+.is-mobile .is-live-preview.markdown-source-view.mod-cm6 .cm-formatting-list-ul::before {
+  margin-inline-end: -10px;
+}
 
 .is-mobile.is-mobile.is-mobile .mobile-toolbar-floating-options, .is-mobile.is-mobile.is-mobile .mobile-toolbar-options-list-container {
   border-radius: var(--touch-radius-m);
@@ -4680,7 +4688,7 @@ strong a:is(.internal-link, .external-link) {
   --root-list-bullet-spacing: 0;
   --list-marker-min-width: 0;
   --list-marker-color: var(--accent);
-  --list-marker-color-other: var(--accent2);
+  --list-marker-color-alt: var(--accent2);
   --list-marker-color-collapsed: var(--inactive);
   --list-numbered-color: var(--headers);
   --list-bullet-size: calc(var(--font-text-size) / 2.5);
@@ -4807,6 +4815,10 @@ ol > li::marker,
 :is(ul ul ul ul ul ul, ol ol ol ol ol ol) > li,
 .cm-hmd-list-indent .cm-indent:nth-child(6)::before {
   --indentation-guide-color: var(--list-color-6);
+}
+
+ul > li:nth-child(even) {
+  --list-marker-color: var(--list-marker-color-alt);
 }
 
 body:not(.disable-spaced-lists) :is(ul, ol) li:not(:first-of-type) p:first-of-type {
@@ -5767,21 +5779,45 @@ body {
   --metadata-divider-width: 0;
 }
 
-.bases-view {
+.bases-view.bases-view {
+  --bases-table-group-background: var(--outer-bar);
+  --bases-group-heading-value-color: var(--soft-text);
   --bases-cards-container-background: transparent;
   --bases-table-header-background: var(--table-header-background);
   --bases-table-header-color: var(--table-header-color);
   --bases-table-column-alt-background: var(--table-column-alt-background);
   --bases-table-row-alt-background: var(--table-column-alt-background);
+  --bases-kanban-column-background: var(--outer-bar);
 }
-.bases-view .bases-table-header-sort {
+.bases-view.bases-view .bases-group-value {
+  color: var(--bases-group-heading-value-color);
+}
+.bases-view.bases-view .bases-view .summary-function-name {
+  color: var(--inactive);
+}
+.bases-view.bases-view .bases-table-header-sort {
   color: var(--text-dl);
 }
-.bases-view .bases-tr > .bases-td:nth-child(2n+2) {
+.bases-view.bases-view .bases-tr > .bases-td:nth-child(2n+2) {
   background-color: var(--bases-table-column-alt-background);
 }
-.bases-view .bases-tr:nth-child(odd) {
+.bases-view.bases-view .bases-tr:nth-child(odd) {
   background-color: var(--bases-table-row-alt-background);
+}
+.bases-view.bases-view .bases-td {
+  box-shadow: calc(var(--bases-table-column-border-width) * -1) 0 0 var(--bases-table-border-color);
+}
+.bases-view.bases-view .bases-tr {
+  box-shadow: 0 calc(var(--bases-table-row-border-width) * -1) 0 var(--bases-table-border-color);
+}
+.bases-view.bases-view .bases-tr:last-child {
+  border-bottom: var(--bases-table-row-border-width) solid var(--bases-table-border-color);
+}
+.bases-view.bases-view .bases-kanban-column-header {
+  padding: 2px var(--size-4-1) 0 var(--size-4-3);
+}
+.bases-view.bases-view .bases-kanban-column-footer {
+  padding: 0px var(--size-4-1);
 }
 
 .bases-toolbar-menu-item.mod-active {
@@ -5789,17 +5825,6 @@ body {
   --icon-color: var(--text-dl);
   color: var(--text-dl);
   font-weight: 900;
-}
-
-.bases-td {
-  box-shadow: calc(var(--bases-table-column-border-width) * -1) 0 0 var(--bases-table-border-color);
-}
-
-.bases-tr {
-  box-shadow: 0 calc(var(--bases-table-row-border-width) * -1) 0 var(--bases-table-border-color);
-}
-.bases-tr:last-child {
-  border-bottom: var(--bases-table-row-border-width) solid var(--bases-table-border-color);
 }
 
 .bases-query-container .filter-row-component {
@@ -5810,16 +5835,8 @@ body {
   box-shadow: var(--shadow-s);
 }
 
-.bases-header .is-active {
+.bases-header .is-active:not(:hover) {
   --icon-color-active: var(--accent);
-}
-
-.bases-group-heading {
-  color: var(--text-dl);
-}
-
-.bases-view .summary-function-name {
-  color: var(--inactive);
 }
 
 .bases-embed .bases-view {
@@ -7868,6 +7885,14 @@ img[alt~=img-border],
   --img-adj-object-fit: contain;
 }
 
+.image-embed.image-embed .image-resize-corner::after {
+  border-end-end-radius: var(--radius-s);
+}
+
+body {
+  --embed-actions-radius: var(--radius-s);
+}
+
 .internal-embed:not(.image-embed)[alt*=htiny] .markdown-embed-content {
   height: var(--tiny);
 }
@@ -9211,14 +9236,12 @@ body:not(.check-color, .check-text) ul > li.task-list-item[data-task][data-task=
   border: 0;
 }
 
-.callout.callout.callout[data-callout-metadata~=clean],
-.callout.callout.callout[data-callout-metadata~=clean] > .callout-content {
+.callout.callout.callout[data-callout-metadata~=clean] {
   border: 0;
   box-shadow: none;
-  --callout-color: transparent;
   --callout-padding: 0;
+  --callout-color: "";
 }
-.callout.callout.callout[data-callout-metadata~=clean] .callout-content,
 .callout.callout.callout[data-callout-metadata~=clean] > .callout-content .callout-content {
   padding: 0;
 }
@@ -9927,7 +9950,7 @@ body:not(.check-color, .check-text) ul > li.task-list-item[data-task][data-task=
 }
 .callout.callout[data-callout=statblocks][data-callout-metadata~=columns] > .callout-content {
   display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   gap: 15px;
 }
 
@@ -10025,7 +10048,7 @@ body:not(.check-color, .check-text) ul > li.task-list-item[data-task][data-task=
 }
 .callout[data-callout~=cards] > .callout-content {
   display: grid;
-  grid-template-columns: repeat(var(--callout-cards-columns), 1fr);
+  grid-template-columns: repeat(var(--callout-cards-columns), minmax(0, 1fr));
   grid-gap: var(--callout-cards-gap);
   border-radius: 0;
   padding-inline-start: 0px;
@@ -10497,7 +10520,7 @@ body:not(.callout-no-metadata) .callout.callout[data-callout~=Metadata i][data-c
 }
 .callout[data-callout*=column] > .callout-content {
   display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   gap: var(--callout-column-gap);
   background: transparent;
   box-shadow: none;
@@ -10587,7 +10610,7 @@ body:not(.callout-no-metadata) .callout.callout[data-callout~=Metadata i][data-c
 }
 .callout[data-callout*=column][data-callout-metadata~=list-x] > .callout-content > :is(ul, ol) {
   display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
 }
 
 /*Kanban*/
@@ -13953,9 +13976,12 @@ body:not(.wotc-beyond) .wotc-beyond:is(.markdown-source-view,
   --h4-border-line-height: var(--header-border-line-height);
   --h5-border-line-height: var(--header-border-line-height);
   --h6-border-line-height: var(--header-border-line-height);
-  --hr-icon-symbol: "";
   background: var(--note);
   --text-dl: white;
+}
+
+.notion {
+  --hr-icon-symbol: "";
 }
 
 .theme-dark .notion, .theme-dark.notion {
@@ -14092,7 +14118,7 @@ body:not(.wotc-beyond) .wotc-beyond:is(.markdown-source-view,
   --hr-icon-symbol: "";
   --hr-icon-font: var(--mdi);
   --bullet: "";
-  --bullet-font: var(--mdi);
+  --bullet-font: var(--mdi, var(--its));
   background: var(--note);
 }
 
@@ -14213,10 +14239,9 @@ body:not(.wotc-beyond) .wotc-beyond:is(.markdown-source-view,
 
 /*----Theme: Tangerine Dunes----*/
 .t-d {
-  --hr-sym: "";
-  --hr-f: var(--mdi);
+  --hr-icon-symbol: "";
+  --hr-icon-font: var(--mdi);
   --header-weight: 500;
-  background: var(--note);
 }
 
 .theme-dark.t-d, .theme-dark .t-d {
@@ -14841,6 +14866,7 @@ body:not(.wotc-beyond) .wotc-beyond:is(.markdown-source-view,
   --list-color-5: var(--indentation-guide-color);
   --list-color-6: var(--indentation-guide-color);
   --list-marker-color: var(--accent);
+  --list-marker-color-alt: var(--accent2);
   --list-numbered-color: var(--lite-accent);
   --th: var(--dark-accent);
   --table-header-background: var(--th);
